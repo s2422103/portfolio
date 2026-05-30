@@ -65,6 +65,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--border-color);
+            background-color: #eee;
         }
         .profile-text h3 {
             margin: 0 0 10px 0;
@@ -96,44 +97,48 @@
             color: #6c757d;
             flex-shrink: 0;
         }
-        /* 作品 */
+        /* 作品（カード全体をリンク化） */
         .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
         }
         .work-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             overflow: hidden;
-            background: var(--bg-color);
-            transition: transform 0.2s;
+            background: var(--card-bg);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .work-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
         }
-        .work-img-placeholder {
-            height: 140px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+        /* サムネイル画像エリア */
+        .work-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #e9ecef; /* 画像がない時の背景色 */
+            display: block;
         }
-        /* 5つの作品ごとに色を変える用 */
-        .card-1 { background: linear-gradient(135deg, #007aff 0%, #00c6ff 100%); }
-        .card-2 { background: linear-gradient(135deg, #ff9500 0%, #ffcc00 100%); }
-        .card-3 { background: linear-gradient(135deg, #4cd964 0%, #5ac8fa 100%); }
-        .card-4 { background: linear-gradient(135deg, #ff2d55 0%, #ffcc00 100%); }
-        .card-5 { background: linear-gradient(135deg, #5856d6 0%, #b39ddb 100%); }
-
         .work-info {
             padding: 15px;
+            border-top: 1px solid var(--border-color);
         }
         .work-title {
             font-weight: bold;
-            margin-bottom: 5px;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: var(--text-color);
+        }
+        .work-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin: 0;
         }
         /* スキル3カラム */
         .skills-layout {
@@ -184,7 +189,7 @@
     <section id="profile">
         <h2>About Me</h2>
         <div class="profile-layout">
-            <img src="https://via.placeholder.com/150" alt="井之川 元哉" class="profile-img">
+            <img src="images/avatar.png" alt="井之川 元哉" class="profile-img" onerror="this.src='https://github.com/identicons/johndoe.png';">
             <div class="profile-text">
                 <h3>井之川 元哉 <span style="font-size: 0.9rem; color: #6c757d; font-weight: normal;">(Motoya Inokawa)</span></h3>
                 <span class="tag">武蔵野大学 データサイエンス学部 3年（石橋ゼミ所属）</span>
@@ -214,35 +219,47 @@
     <section id="works">
         <h2>Works</h2>
         <div class="works-grid">
-            <div class="work-card">
-                <div class="work-img-placeholder card-1">Map App</div>
+            
+            <a href="https://ここにリンクURLを入力.com" class="work-card" target="_blank">
+                <img src="images/map.png" alt="オリジナルマップ" class="work-img">
                 <div class="work-info">
                     <div class="work-title">オリジナルマップ</div>
+                    <p class="work-desc">作品の簡単な説明や、使用した技術（例: JavaScript, PostgreSQL）をここに書けます。</p>
                 </div>
-            </div>
-            <div class="work-card">
-                <div class="work-img-placeholder card-2">Research</div>
+            </a>
+
+            <a href="https://ここにリンクURLを入力.com" class="work-card" target="_blank">
+                <img src="images/pressure.png" alt="気圧変化の可視化に関する研究" class="work-img">
                 <div class="work-info">
                     <div class="work-title">気圧変化の可視化に関する研究</div>
+                    <p class="work-desc">研究の概要や、Python、SQLiteなどを用いたデータ処理についてここに書けます。</p>
                 </div>
-            </div>
-            <div class="work-card">
+            </a>
+
+            <a href="https://ここにリンクURLを入力.com" class="work-card" target="_blank">
+                <img src="images/gourmet.png" alt="グルメマッチングアプリ" class="work-img">
                 <div class="work-info">
                     <div class="work-title">グルメマッチングアプリ</div>
+                    <p class="work-desc">アプリの概要や、PHP、HTML/CSS等での開発ポイントについてここに書けます。</p>
                 </div>
-            </div>
-            <div class="work-card">
-                <div class="work-img-placeholder card-4">Calender</div>
+            </a>
+
+            <a href="https://ここにリンクURLを入力.com" class="work-card" target="_blank">
+                <img src="images/calender.png" alt="life calender" class="work-img">
                 <div class="work-info">
                     <div class="work-title">life calender</div>
+                    <p class="work-desc">カレンダーアプリの目的や工夫した点についてここに書けます。</p>
                 </div>
-            </div>
-            <div class="work-card">
-                <div class="work-img-placeholder card-5">System</div>
+            </a>
+
+            <a href="https://ここにリンクURLを入力.com" class="work-card" target="_blank">
+                <img src="images/inventory.png" alt="在庫管理アプリ" class="work-img">
                 <div class="work-info">
                     <div class="work-title">在庫管理アプリ</div>
+                    <p class="work-desc">実用的な在庫管理システムの機能や、バックエンドの実装についてここに書けます。</p>
                 </div>
-            </div>
+            </a>
+
         </div>
     </section>
 
